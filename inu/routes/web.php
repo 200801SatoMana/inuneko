@@ -20,5 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/timeline', 'Auth\TimelineController@showTimelinePage');   // <--- 追加
-Route::post('/timeline', 'Auth\TimelineController@postTweet');    // <--- 追加
+Route::get('/timeline', [TimelineController::class,'showTimelinePage']);   // <--- 追加
+Route::post('/timeline', [TimelineController::class,'postTweet']);    // <--- 追加
