@@ -13,9 +13,11 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('posts',function(Blueprint $table){
+            $table -> increments('id');
+            $table -> string('image_file_name',100);
+            $table -> string('image_title',100);
+            $table -> timestamp();
         });
     }
 
