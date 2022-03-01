@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tweet extends Model
 {
     protected $fillable = [
-        'user_id','tweet',
+        'user_id','tweet','image_path'
     ];
     use HasFactory;
 }
