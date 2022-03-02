@@ -1,7 +1,7 @@
 """
 犬判定AIプログラム
 NNC　resnet-110.sdcproj使用
-"""
+
 
 import nnabla as nn
 import nnabla.functions as F
@@ -134,3 +134,5 @@ def network(x, test=False):
     # Affine -> 2
     h10 = PF.affine(h10, (2,), name='Affine')
     return h10
+
+    """
