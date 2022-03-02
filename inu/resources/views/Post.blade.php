@@ -14,7 +14,7 @@
         <div class="wrapper">
             <form action="/timeline/post" enctype="multipart/form-data" method="post">
                 @csrf
-                <input type="file" name="tweet" style="margin: 1rem; padding: 0 1rem; width: 70%; border-radius: 6px; border: 1px solid #ccc; height: 2.3rem;" placeholder="柴しか勝たん！">
+                <input type="file" name="imafe_path" style="margin: 1rem; padding: 0 1rem; width: 70%; border-radius: 6px; border: 1px solid #ccc; height: 2.3rem;" placeholder="柴しか勝たん！">
                     <div style="background-color: #E8F4FA; text-align: center;">
                         <input type="submit" value="投稿"style="background-color: #2695E0; color: white; border-radius: 10px; padding: 0.5rem;">
                     </div>
@@ -25,7 +25,13 @@
                         ※{{$errors->first('tweet')}}
                     </p>
                 @endif
-                
+                @foreach($tweets as $image_path)
+                    <div>
+                        <img src="{{ $image_path->image_path }}" alt="image_path" style="width: 30%; height: auto;"/>
+                    </div>
+                @endforeach
+               
+
             </form>
 
         </div>
