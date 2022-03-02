@@ -33,3 +33,6 @@ class CreateTweetsTable extends Migration
         Schema::dropIfExists('tweets');
     }
 }
+
+
+//テスト
