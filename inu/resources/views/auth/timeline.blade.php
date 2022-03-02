@@ -21,7 +21,9 @@
             <div class="tweet-wrapper"> <!-- この辺追加 -->
                 @foreach($tweets as $tweet)
                 <div style="padding:2rem; border-top: solid 1px: #ccc; border-bottom: solid 1px #ccc;">
-                    <div>{{ $tweet->tweet }}</div>
+                    <div>{{ $tweet->tweet }}
+                        <img src="{{ $tweet->image_path }}">
+                    </div>
                 </div>
                 @endforeach
 

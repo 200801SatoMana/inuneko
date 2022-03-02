@@ -12,9 +12,12 @@ class TimelineController extends Controller
 {
     public function showTimelinePage()
     {
+        
+                
         $tweets = tweet::latest()->get();  // 
-        $file = tweet::latest()->get();
-        return view('auth.timeline',compact('tweets','file'));   // 
+        #$file = tweet::latest()->get();
+        
+        return view('auth.timeline',compact('tweets'));   // 
     }
 
     
