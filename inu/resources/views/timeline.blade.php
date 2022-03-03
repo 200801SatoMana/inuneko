@@ -13,21 +13,17 @@
             
                 <div style="background-color: #c19a6b; text-align: center;">
                     
-                    <button action="{{url('/timeline/post')}}" style="background-color:#786D5F ; color: white; border-radius: 10px; padding: 0.5rem;" >投稿</button>
+                    <button action="{{url('/timeline/upload')}}" style="background-color:#786D5F ; color: white; border-radius: 10px; padding: 0.5rem;" >投稿</button>
                 </div>
             
-        
-
-            <div class="tweet-wrapper"> <!-- この辺追加 -->
-                @foreach($tweets as $tweet)
-                <div style="padding:2rem; border-top: solid 1px: #ccc; border-bottom: solid 1px #ccc;">
-                    <div>{{ $tweet->tweet }}
-                        <img src="{{ $tweet->image_path }}">
+                <div class="imgwrapper"> <!-- この辺追加 -->
+                    @foreach($images as $image)
+                    <div>
+                        <img src="{{ $image->image }}" alt="image" style="width: 30%; height: auto;"/>
                     </div>
-                </div>
                 @endforeach
+                </div>
 
-            </div>
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
 

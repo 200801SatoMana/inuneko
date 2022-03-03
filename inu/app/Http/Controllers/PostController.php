@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function index(){
       $tweets = tweet::all();
-      return view('index', ['tweets'=>$tweets]);
+      return view('Post', ['tweets'=>$tweets]);
     }
 
     public function postTweet(Request $request) //Requestはpostリクエストを取得するためのもの
@@ -24,9 +24,9 @@ class PostController extends Controller
 
             
             #$tweet = $request->file('tweet');
-            $path = Storage::disk('s3')->putFile('/test', $tweet, 'public');
+            $path = Storage::disk('s3')->putFile('/test', $image_path, 'public');#
 
-            $tweet->image_path = Storage::disk('s3')->url($path);
+            $image_path->image_path = Storage::disk('s3')->url($path);
 
             #$tweet->save();
             
