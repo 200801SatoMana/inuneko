@@ -8,20 +8,25 @@
     <title>shibastagram</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
-    <body style="height:100%; background-color:#ccc);">
-        <div class="wrapper" style="margin: 0 auto; width: 50%; height: 100%; background-color: white;">
+    <body style="height:auto; background-color:#ccc);">
+        <div class="wrapper" style="margin: 0 auto; width: 50%; height: 100%; background-color:white;font-family:'Courier New', Courier, monospace ">
             
-                <div style="background-color: #c19a6b; text-align: center;">
+                <div style="background-color: #f3be0e; height:70px;text-align: right;">
                     
-                    <button action="{{url('/timeline/upload')}}" style="background-color:#786D5F ; color: white; border-radius: 10px; padding: 0.5rem;" >投稿</button>
+                    <a href="{{url('/timeline/upload')}}">投稿</a>
+                    <button action="{{url('/timeline/upload')}}" style="background-color:#836e53b2 ; color: white;margin:10px; border-radius: 10px; padding: 0.5rem;" >投稿</button>
+                    
                 </div>
             
-                <div class="imgwrapper"> <!-- この辺追加 -->
+                <div class="imgwrapper" style= "background-color:#f3e3b059;padding:2rem;  border-bottom: solid 5px #E6ECF0;"> 
+                    <center>
+                        
                     @foreach($images as $image)
                     <div>
-                        <img src="{{ $image->image }}" alt="image" style="width: 30%; height: auto;"/>
+                        <img src="{{ $image->image }}" alt="image" style="width: 70%;margin:50px; height: auto; ;"/>
                     </div>
                 @endforeach
+                    </center>
                 </div>
 
         </div>
