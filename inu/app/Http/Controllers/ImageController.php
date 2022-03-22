@@ -18,12 +18,19 @@ class ImageController extends Controller
     
     public function store(Request $request)
     {
+        static $count;
         $image=new Image();
         $uploadImg = $image->image = $request->file('image');
-        $path = Storage::disk('s3')->putFile('/test',$uploadImg,'public');
+        $imagepath = (string)$count.'.jpg';
+        $path = Storage::disk('s3')->putFileAs('/test',$uploadImg,$imagepath,'public');
         $image->image = Storage::disk('s3')->url($path);
         $image->save();
+        $count += 1;
         return redirect('/timeline');
+    }
+
+    function countup() {
+        $count ++;
     }
 
    
