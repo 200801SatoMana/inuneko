@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
@@ -12,20 +13,24 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::latest()->get();#新着順
-        return view('index',compact('images')); # ['images'=>$images]);
+        return view('index',compact('images')); 
     }
 
     
     public function store(Request $request)
     {
-        static $count;
-        $image=new Image();
-        $uploadImg = $image->image = $request->file('image');
-        $imagepath = (string)$count.'.jpg';
-        $path = Storage::disk('s3')->putFileAs('/test',$uploadImg,$imagepath,'public');
-        $image->image = Storage::disk('s3')->url($path);
-        $image->save();
-        $count += 1;
+        #Image::create([
+            $image =new Image();
+            $uploadImg = $image->image = $request->file('image');
+            $path = Storage::disk('s3')->putFile('/test',$uploadImg,'public');
+            $image->image = Storage::disk('s3')->url($path);
+            $image ->fill(['name' => Auth::user()->name]);
+            $image->save();
+            #'image'   => $request->image,
+       #]);
+        
+
+
         return redirect('/timeline');
     }
 

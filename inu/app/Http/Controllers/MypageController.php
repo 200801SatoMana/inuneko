@@ -12,13 +12,13 @@ class MypageController extends Controller
     public function update(Request $request){
         
             if($request->hasFile('icon')) {
-                $userID = Auth::userID();
+                $id = Auth::id();
                 $photo_path = $request->file('icon')->store('public/top_file');
                 $icon_pass2 = basename($photo_path);
-                // DBの対象カラムを更新する
+                // DB更新
                 $affected = DB::table('users')
-                    ->where('userID', $userID)
-                    ->update(['profile_path' => $icon_pass2]);
+                    ->where('id', $id)
+                    ->update(['icon' => $icon_pass2]);
                 // 画像に表示させる
                 return redirect("/mypage")->with([
                     "message" => "アイコンを変更しました。",
@@ -29,8 +29,8 @@ class MypageController extends Controller
 
     public function index()
     {
-        $userID = Auth::id();
-        $user = DB::table('users')->find($userID);
+        $id = Auth::id();
+        $user = DB::table('users')->find($id);
         return view('mypage',['myuser'=>$user]);
     }
 }

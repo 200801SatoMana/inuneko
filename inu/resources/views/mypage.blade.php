@@ -8,11 +8,11 @@
 @if (Session::has('icon_pass'))
     <img src="{{ asset('/storage/top_file') }}/{{ session('icon_pass') }}" alt=""> 
 
-@elseif ($myuser->profile_path == "/images/dog_akitainu.png")
-    <p><img src="{{ $myuser->profile_path }}" alt=""> </p>
+@elseif ($myuser->icon == "/images/dog_akitainu.png")
+    <p><img src="{{ $myuser->icon }}" alt=""> </p>
 
 @else
-    <p><img src="{{ asset('/storage/top_file') }}/{{ $myuser->profile_path }}" alt=""> </p>
+    <p><img src="{{ asset('/storage/top_file') }}/{{ $myuser->icon }}" alt=""> </p>
 
 @endif
 <!DOCTYPE html>
@@ -26,6 +26,9 @@
         <input type="file" name="icon">
     </div>
     <input type="submit" value="変更する">
+    <div>
+        <a href="{{url('/timeline')}}">TL</a>
+    </div>
 </form>
 
 </body>

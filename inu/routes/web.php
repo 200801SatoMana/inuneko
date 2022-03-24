@@ -18,6 +18,10 @@ Route::get('/timeline', [TimelineController::class,'showTimelinePage']);
 Route::get('/timeline/upload',[ImageController::class,'index']);
 Route::post('/timeline',[ImageController::class,'store'])->name('image.store');
 Route::get('/mypage',[MypageController::class,'index']);
-#Route::post('/mypage',[MypageController::class,'update']);
+Route::post('/mypage',[MypageController::class,'update']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

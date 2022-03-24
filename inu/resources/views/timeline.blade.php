@@ -22,6 +22,10 @@
                     <center>
                         
                     @foreach($images as $image)
+
+                    <div>
+                        <strong>{{ $image->name }}</strong> {{ $image->created_at }}
+                    </div>
                     <div>
                         <img src="{{ $image->image }}" alt="image" style="width: 70%;margin:50px; height: auto; ;"/>
                     </div>
