@@ -15,6 +15,7 @@
                         <form method="POST" action="{{route('image.store')}}" enctype="multipart/form-data">
                             @csrf
                             <input id="image" type="file" name="image" style= margin:20px;>
+                            <input is="image" type="string" name="comment">
                         
                             <button type="submit">投稿</button>
                             <a href="{{url('/timeline')}}">もどる</a>

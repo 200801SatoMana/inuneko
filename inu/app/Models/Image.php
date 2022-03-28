@@ -10,5 +10,5 @@ class Image extends Model
     use HasFactory;
 
     
-    protected $fillable = ['image','name'];
+    protected $fillable = ['image','name','uid','comment'];
 }

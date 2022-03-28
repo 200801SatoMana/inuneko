@@ -19,20 +19,25 @@ class ImageController extends Controller
     
     public function store(Request $request)
     {
-        #Image::create([
+        
             $image =new Image();
             $uploadImg = $image->image = $request->file('image');
             $path = Storage::disk('s3')->putFile('/test',$uploadImg,'public');
             $image->image = Storage::disk('s3')->url($path);
             $image ->fill(['name' => Auth::user()->name]);
+            $image ->fill(['userID' => Auth::user()->userID]);
+            $image ->fill(['comment' => $request-> comment]);
+            $image ->fill(['uid' => Auth::user()->id]);
             $image->save();
-            #'image'   => $request->image,
-       #]);
+            
+            
         
 
 
         return redirect('/timeline');
     }
+
+    
 
     function countup() {
         $count ++;

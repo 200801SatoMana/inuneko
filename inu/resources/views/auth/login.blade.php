@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                       <!-- <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -24,6 +24,20 @@
                                 @enderror
                             </div>
                         </div>
+                    -->
+                    <div class="form-group row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">ユーザID</label>
+
+                        <div class="col-md-6">
+                            <input id="userID" type="text" class="form-control @error('userID') is-invalid @enderror" name="userID" value="{{ old('userID') }}" required autocomplete="userID" autofocus>
+
+                            @error('userID')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

@@ -19,7 +19,7 @@ class MypageController extends Controller
                 $affected = DB::table('users')
                     ->where('id', $id)
                     ->update(['icon' => $icon_pass2]);
-                // 画像に表示させる
+                // 画像表示
                 return redirect("/mypage")->with([
                     "message" => "アイコンを変更しました。",
                     "icon_pass" => $icon_pass2 
@@ -32,5 +32,11 @@ class MypageController extends Controller
         $id = Auth::id();
         $user = DB::table('users')->find($id);
         return view('mypage',['myuser'=>$user]);
+    }
+
+    public function userpage($uid)
+    {
+        $user = DB::table('users')->find($uid);
+        return view('userpage',['myuser'=>$user]);
     }
 }
