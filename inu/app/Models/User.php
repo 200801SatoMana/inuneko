@@ -43,4 +43,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function likes()
+    {
+        return $this->belongsToMany(Image::class, 'likes', 'user_id', 'image_id')->withTimestamps();
+    }
+
+    public function like($imageId)
+    {
+        $exist = $this->is_like($imageId);
+
+        if($exist){
+            return false;
+        }else{
+            $this->likes()->attach($imageId);
+            return true;
+        }
+    }
+
+    public function unlike($imageId)
+    {
+        $exist = $this->is_like($imageId);
+
+        if($exist){
+            $this->likes()->detach($imageId);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function is_like($imageId)
+    {
+        return $this->likes()->where('image_id',$imageId)->exists();
+    }
 }

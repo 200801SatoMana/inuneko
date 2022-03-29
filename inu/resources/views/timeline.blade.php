@@ -13,11 +13,11 @@
         <div class="wrapper" style="margin: 0 auto; width: 50%; height: 100%; background-color:white;font-family:'Courier New', Courier, monospace ">
             
                 <div style="background-color: #f3be0e; height:70px;text-align: right;">
-                    <i class="fa-solid fa-user fa-2x"></i>
+                    
                     <input type="button" onclick="location.href='/mypage'" value="&#xf007;" class="fas" style="font-size: 40px;">
-                    <!--<input type="submit" value="&#xf164;いいね" class="fas btn btn-success">-->
+                    
     
-                    <input type="button" onclick="location.href='/timeline/upload'" style="background-color:#836e53b2 ; color: white;margin:10px; border-radius: 10px; padding: 0.5rem;" >投稿</button>
+                    <input type="button" onclick="location.href='/timeline/upload'" value="投稿" style="background-color:#836e53b2 ; color: white;margin:10px; border-radius: 10px; padding: 0.5rem;" >
                     
                 </div>
             
@@ -35,6 +35,25 @@
                     </div>
                     <div style="font-size: 20px;color:rgb(119, 108, 90)">
                         {{$image->comment}}
+
+                        
+                            <!--フォームファサード使用-->
+                            @if (Auth::user()->is_like($image->id))
+
+                                {{ Form::open(['route' => ['likes.unlike', $image->id], 'method' => 'delete']) }}
+                                    <button type="submit" class="btn" style="color:rgb(179, 144, 152); font-size:20px;"><i class="fa-solid fa-paw"></i></button>
+                                {{ Form::close() }}
+
+                            @else
+
+                                {{ Form::open(['route' => ['likes.like', $image->id]]) }}
+                                <button type="submit" class="btn" style="color:rgb(58, 57, 57); font-size:20px;"><i class="fa-solid fa-paw"></i></button>
+                                {{ Form::close() }}
+
+                            @endif
+
+                        
+                        
                         <hr style="height: 5px;
                         background: rgb(185, 177, 162);
                         border: none;">
