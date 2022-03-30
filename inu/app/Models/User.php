@@ -77,4 +77,46 @@ class User extends Authenticatable
     {
         return $this->likes()->where('image_id',$imageId)->exists();
     }
+
+    //フォロワー取得
+    public function followUsers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_user', 'following_user');
+    }
+
+    // フォロー取得
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_user', 'follower_user');
+    }
+
+    public function follow($id)
+    {
+        $exist = $this->is_follow($id);
+
+        if($exist){
+            return false;
+        }else{
+            $this->follows()->attach($id);
+            return true;
+        }
+        $followCount = count(FollowUser::where('follower_user', $user->id)->get());
+        return response()->json(['followCount' => $followCount]);
+    }
+
+    public function unfollow($id)
+    {
+        $exist = $this->is_follow($id);
+
+        
+            $this->follows()->detach($id);
+            return true;
+            $followCount = count(FollowUser::where('follower_user', $user->id)->get());
+            return response()->json(['followCount' => $followCount]);
+    }
+
+    public function is_follow($id)
+    {
+        return $this->follows()->where('follower_user',$id)->exists();
+    }
 }

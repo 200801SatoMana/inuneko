@@ -15,7 +15,8 @@ class ImageController extends Controller
         $images = Image::latest()->get();#新着順
         return view('index',compact('images')); 
     }
-
+    
+    
     
     public function store(Request $request)
     {

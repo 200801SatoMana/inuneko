@@ -14,7 +14,7 @@
             
                 <div style="background-color: #f3be0e; height:70px;text-align: right;">
                     
-                    <input type="button" onclick="location.href='/mypage'" value="&#xf007;" class="fas" style="font-size: 40px;">
+                    <input type="button" onclick="location.href='/mypage'" value="&#xf007;" class="fas" style="background-color:#836e53b2 ; color: white;font-size: 40px;margin:10px;border-radius: 10px; padding: 0.5rem;">
                     
     
                     <input type="button" onclick="location.href='/timeline/upload'" value="投稿" style="background-color:#836e53b2 ; color: white;margin:10px; border-radius: 10px; padding: 0.5rem;" >
@@ -41,13 +41,13 @@
                             @if (Auth::user()->is_like($image->id))
 
                                 {{ Form::open(['route' => ['likes.unlike', $image->id], 'method' => 'delete']) }}
-                                    <button type="submit" class="btn" style="color:rgb(179, 144, 152); font-size:20px;"><i class="fa-solid fa-paw"></i></button>
+                                    <button type="submit" class="btn" style="color:rgb(179, 144, 152); font-size:20px;border-radius: 10px; padding: 0.5rem;"><i class="fa-solid fa-paw"></i></button>
                                 {{ Form::close() }}
 
                             @else
 
                                 {{ Form::open(['route' => ['likes.like', $image->id]]) }}
-                                <button type="submit" class="btn" style="color:rgb(58, 57, 57); font-size:20px;"><i class="fa-solid fa-paw"></i></button>
+                                <button type="submit" class="btn" style="color:rgb(58, 57, 57); font-size:20px;border-radius: 10px; padding: 0.5rem;"><i class="fa-solid fa-paw"></i></button>
                                 {{ Form::close() }}
 
                             @endif
