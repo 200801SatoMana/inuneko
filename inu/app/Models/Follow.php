@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tweet extends Model
+class Follow extends Model
 {
-    protected $fillable = [
-        'user_id','tweet','image_path'
-    ];
-    use HasFactory;
+    protected $fillable = ['following_user', 'follower_user'];
+
+    protected $table = 'follows';
+
 }
