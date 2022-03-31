@@ -17,6 +17,7 @@ python3.8
 AWS S3  
 AWS Rekognition  
 AWS Lambda  
+Klayers-python38-Pillow　　
 
 ## 今後実装したい機能　　
 相互フォロー限定のDM機能　　
