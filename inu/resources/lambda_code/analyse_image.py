@@ -27,7 +27,6 @@ def detect_labels(model,bucket,photo,min_confidence):
     response = client.detect_custom_labels(Image={'S3Object':{'Bucket':bucket,'Name':photo}},
         MinConfidence=min_confidence,
         ProjectVersionArn = model)
-    #response['CustomLabels'] = model
         
     print('Detected Labels for ' + photo)
     print()
@@ -52,7 +51,6 @@ def main(photo):
     print("model start")
     label = detect_labels(model,bucket,photo,min_confidence)
     return label
-    #print("Custom labels detected: " + str(label_count))
 
 
 if __name__ == "__main__":
