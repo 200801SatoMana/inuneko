@@ -6,6 +6,8 @@
   
 ![This is an image](./image/shibastagram.png)
 
+アプリの画面画像、動画追加予定
+
 
 
 ## 概要  
